@@ -15,7 +15,6 @@ ActiveRecord::Schema.define(:version => 20110727192449) do
   create_table "alerts", :force => true do |t|
     t.integer  "position_id"
     t.date     "date"
-    t.string   "scale_in_comment"
     t.string   "comment"
     t.string   "action"
     t.datetime "created_at"
@@ -26,7 +25,12 @@ ActiveRecord::Schema.define(:version => 20110727192449) do
     t.date     "date_open"
     t.date     "date_closed"
     t.string   "ticker"
-    t.decimal  "price",               :precision => 10, :scale => 4
+    t.string   "price"
+    t.string   "change"
+    t.string   "percent"
+    t.string   "direction"
+    t.decimal  "start_price",         :precision => 10, :scale => 4
+    t.decimal  "max_price",           :precision => 10, :scale => 4
     t.decimal  "scale_in_low_price",  :precision => 10, :scale => 4
     t.decimal  "scale_in_high_price", :precision => 10, :scale => 4
     t.decimal  "scale_out_price",     :precision => 10, :scale => 4

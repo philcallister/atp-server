@@ -5,7 +5,12 @@ class CreatePositions < ActiveRecord::Migration
       t.date    :date_open
       t.date    :date_closed
       t.string  :ticker
-      t.decimal :price, :precision => 10, :scale => 4
+      t.string  :price
+      t.string  :change
+      t.string  :percent
+      t.string  :direction
+      t.decimal :start_price, :precision => 10, :scale => 4
+      t.decimal :max_price, :precision => 10, :scale => 4 # @@@@@ Entered or calculatd???
       t.decimal :scale_in_low_price, :precision => 10, :scale => 4
       t.decimal :scale_in_high_price, :precision => 10, :scale => 4
       t.decimal :scale_out_price, :precision => 10, :scale => 4

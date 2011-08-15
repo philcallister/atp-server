@@ -24,3 +24,4 @@ Atp::Application.configure do
   config.action_dispatch.best_standards_support = :builtin
 end
 
+ActiveRecord::Base.logger = Logger.new(STDOUT) if defined? Rails::Console

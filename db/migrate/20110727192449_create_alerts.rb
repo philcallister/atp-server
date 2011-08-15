@@ -3,7 +3,6 @@ class CreateAlerts < ActiveRecord::Migration
     create_table :alerts do |t|
       t.references :position
       t.date       :date
-      t.string     :scale_in_comment
       t.string     :comment
       t.string     :action
 

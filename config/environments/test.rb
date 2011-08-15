@@ -33,3 +33,5 @@ Atp::Application.configure do
   # Print deprecation notices to the stderr
   config.active_support.deprecation = :stderr
 end
+
+ActiveRecord::Base.logger = Logger.new(STDOUT) if defined? Rails::Console

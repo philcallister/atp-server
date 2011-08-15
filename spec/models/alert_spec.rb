@@ -1,3 +1,16 @@
+# == Schema Information
+#
+# Table name: alerts
+#
+#  id          :integer         not null, primary key
+#  position_id :integer
+#  date        :date
+#  comment     :string(255)
+#  action      :string(255)
+#  created_at  :datetime
+#  updated_at  :datetime
+#
+
 require 'spec_helper'
 
 describe Alert do
@@ -7,8 +20,8 @@ describe Alert do
     alert = Alert.make!
     alert.position.should_not == nil
     alert.date.should == Date.parse('2011-07-26')
-    alert.scale_in_comment.should == 'alert scale-in comment'
     alert.comment.should == 'alert comment'
     alert.action.should == 'alert action'
   end
 end
+

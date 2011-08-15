@@ -1,4 +1,9 @@
 Atp::Application.routes.draw do
+
+  resources :positions, :only => [:index]do
+    resources :alerts, :only => [:index]
+  end
+
   # The priority is based upon order of creation:
   # first created -> highest priority.
 
