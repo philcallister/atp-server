@@ -26,7 +26,9 @@ class PositionsController < ApplicationController
     @positions.each do |position|
       quote(position)
     end
-    render :index
+    respond_with @positions do |format|
+      format.json { render :index }
+    end
   end
 
   # TODO Hack slash here...this should move into a job that runs every
