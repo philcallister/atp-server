@@ -10,7 +10,7 @@ class AlertsController < ApplicationController
 
   def find_alerts
     if params[:position_id]
-      @alerts = Alert.find_all_by_position_id(params[:position_id])
+      @alerts = Alert.where(:position_id => params[:position_id]).order('date DESC')
     end
   end
 
