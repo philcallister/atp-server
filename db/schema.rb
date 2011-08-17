@@ -24,6 +24,7 @@ ActiveRecord::Schema.define(:version => 20110727192449) do
   create_table "positions", :force => true do |t|
     t.date     "date_open"
     t.date     "date_closed"
+    t.boolean  "active"
     t.string   "ticker"
     t.string   "price"
     t.string   "change"

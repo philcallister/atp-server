@@ -1,6 +1,8 @@
 Atp::Application.routes.draw do
 
-  resources :positions, :only => [:index]do
+  resources :positions, :only => [:index] do
+    get 'active', :on => :collection
+    get 'core', :on => :collection
     resources :alerts, :only => [:index]
   end
 

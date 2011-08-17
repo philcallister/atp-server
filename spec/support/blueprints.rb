@@ -6,6 +6,7 @@ require 'machinist/active_record'
 Position.blueprint do
   date_open { Date.parse '2011-07-25' }
   date_closed { Date.parse '2011-07-27' }
+  active { true }
   ticker { 'abcd' }
   start_price { 999999.9999 }
   max_price { 42.10 }
@@ -18,6 +19,7 @@ end
 Position.blueprint(:with_alerts) do
   date_open { Date.parse '2011-07-25' }
   date_closed { Date.parse '2011-07-27' }
+  active { true }
   ticker { 'abcd' }
   start_price { 999999.9999 }
   max_price { 42.10 }

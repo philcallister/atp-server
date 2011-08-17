@@ -8,8 +8,8 @@ Alert.create([
 
 
 Position.create([
-  { :created_at => "2011-08-01 00:00:00", :date_closed => nil, :date_open => "2011-08-01", :max_price => 9.23, :report_url => "www.reddit.com", :scale_in_high_price => 7.51, :scale_in_low_price => 7.45, :scale_out_price => nil, :start_price => 7.40, :ticker => "SQNS", :updated_at => nil },
-  { :created_at => nil, :date_closed => nil, :date_open => "2011-08-05", :max_price => 25.18, :report_url => "www.activetradingpartners.com", :scale_in_high_price => 23.38, :scale_in_low_price => 23.35, :scale_out_price => nil, :start_price => 23.31, :ticker => "DDD", :updated_at => nil }
+  { :created_at => "2011-08-01 00:00:00", :date_closed => nil, :date_open => "2011-08-01", :active => true, :max_price => 9.23, :report_url => "www.reddit.com", :scale_in_high_price => 7.51, :scale_in_low_price => 7.45, :scale_out_price => nil, :start_price => 7.40, :ticker => "SQNS", :updated_at => nil },
+  { :created_at => nil, :date_closed => nil, :date_open => "2011-08-05", :active => false, :max_price => 25.18, :report_url => "www.activetradingpartners.com", :scale_in_high_price => 23.38, :scale_in_low_price => 23.35, :scale_out_price => nil, :start_price => 23.31, :ticker => "DDD", :updated_at => nil }
 ])
 
 

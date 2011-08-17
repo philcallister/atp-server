@@ -27,6 +27,11 @@ class Position < ActiveRecord::Base
   has_many :alerts, :order => 'date DESC', :dependent => :destroy
   has_one :recent_alert, :class_name => 'Alert', :order => 'date DESC'
 
+  attr_accessor :price
+  attr_accessor :is_up
+  attr_accessor :change
+  attr_accessor :percent
+
   #############################################################################
   # Instance Methods
 
@@ -48,12 +53,24 @@ class Position < ActiveRecord::Base
     end
   end
 
+  def is_up_max
+    max_upside > 0
+  end
+
   #############################################################################
   # Class Methods
   class << self
 
-    def find_open_with_recent_alert
+    def find_all_open_with_recent_alert
       Position.where(:date_closed => nil).includes(:recent_alert)
+    end
+
+    def find_active_open_with_recent_alert
+      Position.where(:date_closed => nil).where(:active => true).includes(:recent_alert)
+    end
+
+    def find_core_open_with_recent_alert
+      Position.where(:date_closed => nil).where(:active => false).includes(:recent_alert)
     end
 
  end

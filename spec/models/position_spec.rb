@@ -79,37 +79,65 @@ describe Position do
   it "should have a max upside using scale_in_low_price" do
     position = Position.make
     position.max_upside.should == 4.47
+    position.is_up_max.should == true
   end
   it "should have a max upside using scale_in_high_price" do
     position = Position.make(:scale_in_low_price => nil)
     position.max_upside.should == 4.39
+    position.is_up_max.should == true
+  end
+  it "show have a negative max upside" do
+    position = Position.make(:scale_in_low_price => 42.80)
+    position.max_upside.should == -1.64
+    position.max_upside.should < 0
+    position.is_up_max.should == false
   end
   it "should have 0% max upside -- no scale_in_low_price or max_price" do
     position = Position.make(:scale_in_low_price => nil, :max_price => nil)
     position.max_upside.should == 0
+    position.is_up_max.should == false
   end
   it "should have 0% max upside -- no max_price" do
     position = Position.make(:max_price => nil)
     position.max_upside.should == 0
+    position.is_up_max.should == false
   end
 
   #############################################################################
   # Finders
   
-  it "should find all open positions and latest alert for each" do
-    # setup
-    2.times do
-      add_alerts(Position.make!(:date_closed => nil)) # 2 open positions
-    end
-    add_alerts(Position.make!) # closed position
+  # setup
+  2.times do
+    add_alerts(Position.make!(:date_closed => nil)) # 2 active open positions
+  end
+  4.times do
+    add_alerts(Position.make!(:date_closed => nil, :active => false)) # 4 active open positions
+  end
+  add_alerts(Position.make!) # closed position
 
-    # find open positions and latest alert for each
-    positions = Position.find_open_with_recent_alert
+  it "should find all open positions and latest alert for each" do
+    # find all open positions and latest alert for each
+    positions = Position.find_all_open_with_recent_alert
+    positions.length.should == 6
+    positions.each do |p|
+      p.recent_alert.date.should == (Date.parse ALERT_RECENT_DATE)
+    end
+  end
+  it "should find all open active positions and latest alert for each" do
+    # find active open positions and latest alert for each
+    positions = Position.find_active_open_with_recent_alert
     positions.length.should == 2
     positions.each do |p|
       p.recent_alert.date.should == (Date.parse ALERT_RECENT_DATE)
     end
-
+  end
+  it "should find all open core positions and latest alert for each" do
+    # find active core positions and latest alert for each
+    positions = Position.find_core_open_with_recent_alert
+    positions.length.should == 4
+    positions.each do |p|
+      p.recent_alert.date.should == (Date.parse ALERT_RECENT_DATE)
+    end
   end
 
 end

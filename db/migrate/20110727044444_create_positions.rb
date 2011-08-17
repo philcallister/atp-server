@@ -4,6 +4,7 @@ class CreatePositions < ActiveRecord::Migration
     create_table :positions do |t|
       t.date    :date_open
       t.date    :date_closed
+      t.boolean :active
       t.string  :ticker
       t.string  :price
       t.string  :change
