@@ -6,6 +6,7 @@ gem 'rails', '3.0.9'
 # Bundle edge Rails instead:
 # gem 'rails', :git => 'git://github.com/rails/rails.git'
 
+gem 'redis'
 gem 'sqlite3'
 gem 'annotate'
 gem 'rabl'

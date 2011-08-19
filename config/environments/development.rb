@@ -25,3 +25,6 @@ Atp::Application.configure do
 end
 
 ActiveRecord::Base.logger = Logger.new(STDOUT) if defined? Rails::Console
+
+# Redis
+ENV["REDIS_URL"] = 'redis://192.168.2.3:6379'
